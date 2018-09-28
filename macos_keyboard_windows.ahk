@@ -15,7 +15,7 @@ if (ScriptEnabled) {
 }
 return
 
-Alt & Shift::
+RShift & Enter::
 if (ScriptEnabled) {
 	MacKeyboard := !MacKeyboard
 	if (MacKeyboard) {
@@ -42,9 +42,12 @@ return
 #!u::SendInput ^u
 #If
 
-// Non-browser hotkeys
+// Generic hotkeys
 #If ScriptEnabled and MacKeyboard
 RAlt::LAlt
+// Keys for < and ^ are seemingly switched on Mac keyboard
+<::^
+^::<
 
 // CMD-Space
 #Space::
@@ -116,9 +119,8 @@ return
 SendInput ^+{Right}
 return
 
-
 // Alt-modified keys, top to bottom
-!^::SendInput {U+201E}
+!<::SendInput {U+201E}
 !1::SendInput {U+A1}
 !2::SendInput {U+201C}
 !3::SendInput {U+B6}
@@ -158,7 +160,7 @@ return
 !ä::SendInput {U+E6}
 !#::SendInput {U+2018}
 
-!<::SendInput {U+2264}
+!^::SendInput {U+2264}
 !y::SendInput {U+A5}
 !x::SendInput {U+2248}
 !c::SendInput {U+E7}
@@ -171,7 +173,7 @@ return
 !-::SendInput {U+2013}
 
 // Alt-Shift modified keys, top to bottom
-!+^::SendInput {U+201C}
+!+<::SendInput {U+201C}
 !+1::SendInput {U+AC}
 !+2::SendInput {U+201D}
 !+3::SendInput {U+23}
@@ -210,7 +212,7 @@ return
 !+ä::SendInput {U+C6}
 !+#::SendInput {U+2019}
 
-!+<::SendInput {U+2265}
+!+^::SendInput {U+2265}
 !+y::SendInput {U+2021}
 !+x::SendInput {U+D9}
 !+c::SendInput {U+C7}
@@ -241,7 +243,7 @@ return
 #!u::SendInput ^u
 #If
 
-// Non-browser hotkeys
+// Generic hotkeys
 #If ScriptEnabled and !MacKeyboard
 // Using right CTRL as secondary "Alt"/"Windows"
 RCtrl::LWin
