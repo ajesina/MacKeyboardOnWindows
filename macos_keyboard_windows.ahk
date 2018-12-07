@@ -4,7 +4,7 @@
 ScriptEnabled := true
 
 // Flag to mark whether a Mac or Windows keyboard is used
-MacKeyboard := false
+MacKeyboard := true
 
 LShift & RShift::
 ScriptEnabled := !ScriptEnabled
@@ -42,10 +42,42 @@ return
 #!u::SendInput ^u
 #If
 
+// IntelliJ
+#If ScriptEnabled and MacKeyboard and WinActive("ahk_exe idea64.exe")
+#+o::SendInput !+o
+#1::SendInput !1
+#2::SendInput !2
+#3::SendInput !3
+#4::SendInput !4
+#5::SendInput !5
+#6::SendInput !6
+#7::SendInput !7
+#8::SendInput !8
+#9::SendInput !9
+#b::SendInput !b
+#w::SendInput ^w
+#+f::SendInput !+f
+#r::SendInput !r
+#+r::SendInput !+r
+#+g::SendInput !+g
+#g::SendInput !g
+#a::SendInput ^a
+#If
+
+// Git Bash
+#If ScriptEnabled and MacKeyboard and WinActive("ahk_exe mintty.exe")
+#c::SendInput ^{Ins}
+#v::SendInput +{Ins}
+#If
+
+// Outlook
+#If ScriptEnabled and MacKeyboard and WinActive("ahk_exe OUTLOOK.EXE")
++Backspace::SendInput {Del}
+#If
+
 // Generic hotkeys
 #If ScriptEnabled and MacKeyboard
 RAlt::LAlt
-// Keys for < and ^ are seemingly switched on Mac keyboard
 <::^
 ^::<
 
@@ -241,6 +273,18 @@ return
 !+r::SendInput ^+r
 #!i::SendInput ^+i
 #!u::SendInput ^u
+#If
+
+// Git Bash
+#If ScriptEnabled and MacKeyboard and WinActive("ahk_exe mintty.exe")
+!c::SendInput ^{Ins}
+!v::SendInput +{Ins}
+#If
+
+// IntelliJ
+#If ScriptEnabled and !MacKeyboard and WinActive("ahk_exe idea64.exe")
+!w::SendInput ^w
+!a::SendInput ^a
 #If
 
 // Generic hotkeys
