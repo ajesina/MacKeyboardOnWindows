@@ -276,7 +276,7 @@ return
 #If
 
 // Git Bash
-#If ScriptEnabled and MacKeyboard and WinActive("ahk_exe mintty.exe")
+#If ScriptEnabled and !MacKeyboard and WinActive("ahk_exe mintty.exe")
 !c::SendInput ^{Ins}
 !v::SendInput +{Ins}
 #If
